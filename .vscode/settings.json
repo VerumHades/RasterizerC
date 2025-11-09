@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "*.uwt": "uwt",
+        "*.xml": "xml",
+        "*.css": "css",
+        "*.hpp": "cpp",
+        "string_view": "c",
+        "algorithm": "c",
+        "random": "c",
+        "istream": "c",
+        "limits": "c",
+        "numeric": "c",
+        "screen.h": "c",
+        "cmath": "c"
+    }
+}
