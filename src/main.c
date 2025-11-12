@@ -11,6 +11,7 @@
 #include "math/mathplus.h"
 #include "math/matrix4x4.h"
 #include <cpuid.h>
+#include <time.h>
 
 Matrix4x4* view_matrix = NULL;
 ProjectionPlane* view_plane = NULL;
@@ -49,7 +50,7 @@ int main() {
 
     float_unit vertex_data[9] = {
         0.0f,  20.0f, 30.0f,   // top-center
-        10.0f,10.0f, 20.0f,  // bottom-right
+        100.0f,30.0f, 20.0f,  // bottom-right
         0.0f,  0.0f, 20.0f,  // bottom-left, in front of camera
     };
 
@@ -59,7 +60,16 @@ int main() {
         .vertex_size = 3
     };
 
-    render_vertex_data(&buffer, default_shader, fragment_shader, &data);
+    clock_t start = clock();
+
+    for (int i = 0; i < 1; i++) {     
+        render_vertex_data(&buffer, default_shader, fragment_shader, &data);
+    }
+
+    clock_t end = clock();
+    double time_sec = (double)(end - start) / CLOCKS_PER_SEC;
+    printf("%lf", time_sec );
+
     write_screen_to_bmp(&buffer, "image.bmp");
 
     // --- Cleanup ---

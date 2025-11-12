@@ -26,6 +26,8 @@ file(GLOB_RECURSE PROJECT_SOURCES
 
 # ============================================================ 
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mavx")
+
 # Create executable
 add_executable(main ${PROJECT_SOURCES})
 

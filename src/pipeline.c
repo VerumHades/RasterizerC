@@ -50,5 +50,6 @@ int fill_triangle(ScreenBuffer* buffer, Triangle2* triangle, unsigned char* valu
             }
         }
     }
+    
     return 0;
 }
