@@ -1,6 +1,8 @@
 #include "triangle.h"
-#include "mathplus.h"
-#include <string.h>
+#include "math/mathplus.h"
+#include "units.h"
+#include "math/vector2.h"
+#include <immintrin.h>
 
 BoundingBox get_triangle_bounding_box(Triangle2* triangle){
     BoundingBox box = {0};
@@ -32,35 +34,18 @@ ComputedTriangleData compute_triangle_normals(Triangle2* triangle){
 }
 
 int point_in_triangle_precomputed(Triangle2* triangle, ComputedTriangleData* data, Vector2* point){
+    int sign = 0;
+
     for(int i = 0; i < 3; i++){
         Vector2* a = &triangle->points[i];
         Vector2 edge_to_point = vector_from_a_to_b(a, point);
         Vector2 normal = data->normals_not_normalized[i];
 
-        float_unit delta = dot(&normal, &edge_to_point);
-        
-        if(dot(&normal, &edge_to_point) < 0) return 0;
+        float_unit signed_direction = dot(&normal, &edge_to_point);
+        int new_sign = (signed_direction >= 0) ? 1 : -1;
+
+        if(i != 0 && new_sign != sign) return 0;
+        sign = new_sign; 
     }
     return 1;
-}
-
-int fill_triangle(ScreenBuffer* buffer, Triangle2* triangle, unsigned char* value){
-    BoundingBox box = get_triangle_bounding_box(triangle);
-    int x_start = clamp(box.min.x, 0, buffer->width);
-    int x_end   = clamp(box.max.x, 0, buffer->width);
-    int y_start = clamp(box.min.y, 0, buffer->height);
-    int y_end   = clamp(box.max.y, 0, buffer->height);
-
-    ComputedTriangleData data = compute_triangle_normals(triangle);
-
-    for(int y = y_start; y < y_end; y++){
-        for(int x = x_start; x < x_end; x++){
-            Vector2 point = {.x=(float)x, .y=(float)y};
-            if(point_in_triangle_precomputed(triangle, &data, &point)){
-                int index = coordinates_to_buffer_index(buffer, x, y);
-                memcpy(buffer->data + index * buffer->pixel_size, value, buffer->pixel_size);
-            }
-        }
-    }
-    return 0;
 }

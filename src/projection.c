@@ -1,12 +1,6 @@
 #include "projection.h"
 #include <math.h>
 
-
-void printVector3(const Vector3* v) {
-    if (!v) return;
-    printf("(%f, %f, %f)\n", v->x, v->y, v->z);
-}
-
 Vector2 project_3D_point_to_plane(ProjectionPlane* plane, Vector3* point){
     Vector3 projection_vector = vector3_from_a_to_b(&plane->origin, point);
     
@@ -99,11 +93,4 @@ ProjectionPlane create_projection_plane(float_unit width, float_unit height, Vec
 
 
     return plane;
-}
-
-Camera create_camera(ProjectionPlane* plane){
-    return (Camera){
-        .plane = *plane,
-        .view_matrix = build_view_matrix(plane)
-    };
 }

@@ -2,8 +2,8 @@
 #define TRIANGLE_H
 
 #include "units.h"
-#include "vector2.h"
-#include "vector3.h"
+#include "math/vector2.h"
+#include "math/vector3.h"
 #include "screen.h"
 
 typedef struct Triangle2 {
@@ -27,6 +27,7 @@ typedef struct BoundingBox {
 BoundingBox get_triangle_bounding_box(Triangle2* triangle);
 ComputedTriangleData compute_triangle_normals(Triangle2* triangle);
 int point_in_triangle_precomputed(Triangle2* triangle, ComputedTriangleData* data, Vector2* point);
-int fill_triangle(ScreenBuffer* buffer, Triangle2* triangle, unsigned char* value);
+float_unit calculate_triangle_area(Triangle2* triangle);
+
 
 #endif // TRIANGLE_H
