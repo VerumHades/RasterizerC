@@ -8,8 +8,10 @@
 typedef unsigned char byte;
 typedef float pipeline_float;
 
+#define MAX_VERTEX_SIZE 64
+
 typedef struct VertexShaderEnvironment {
-    Vector2* output;
+    Vector3* output;
 } VertexShaderEnvironment;
 
 typedef void(*VertexShader)(VertexShaderEnvironment* env, pipeline_float* data);
@@ -21,9 +23,10 @@ typedef struct FragmentShaderEnvironment {
 typedef void(*FragmentShader)(FragmentShaderEnvironment* env, pipeline_float* data);
 
 typedef struct VertexData {
-    pipeline_float* data;
-    size_t size;
-    size_t vertex_size;
+    pipeline_float* data; // Raw packed vertex data
+
+    size_t size; // Total size
+    size_t vertex_size; // Single vertex size
 } VertexData;
 
 enum RenderResult {
@@ -31,7 +34,6 @@ enum RenderResult {
     INVALID_VERTEX_DATA
 };
 
-int fill_triangle(ScreenBuffer* buffer, Triangle2* triangle, unsigned char* value);
-int render_vertex_data(ScreenBuffer* buffer, VertexShader vertex_shader, FragmentShader fragment_shader, VertexData* vertex_data);
+int render_vertex_data(ScreenBuffer* buffer, ScreenBuffer* depth_buffer, VertexShader vertex_shader, FragmentShader fragment_shader, VertexData* vertex_data);
 
 #endif // MATHPLUS_H

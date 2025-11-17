@@ -1,62 +1,50 @@
 [
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/draw.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/draw.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/draw.c",
-  "output": "CMakeFiles/main.dir/src/draw.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/main.c.o -c /home/hades/projects/c/renderer/src/main.c",
+  "file": "/home/hades/projects/c/renderer/src/main.c",
+  "output": "CMakeFiles/main.dir/src/main.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/main.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/main.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/main.c",
-  "output": "CMakeFiles/main.dir/src/main.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/matrix4x4.c.o -c /home/hades/projects/c/renderer/src/matrix4x4.c",
+  "file": "/home/hades/projects/c/renderer/src/matrix4x4.c",
+  "output": "CMakeFiles/main.dir/src/matrix4x4.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/math/matrix4x4.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/math/matrix4x4.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/math/matrix4x4.c",
-  "output": "CMakeFiles/main.dir/src/math/matrix4x4.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/projection.c.o -c /home/hades/projects/c/renderer/src/projection.c",
+  "file": "/home/hades/projects/c/renderer/src/projection.c",
+  "output": "CMakeFiles/main.dir/src/projection.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/math/vector2.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector2.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector2.c",
-  "output": "CMakeFiles/main.dir/src/math/vector2.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/screen.c.o -c /home/hades/projects/c/renderer/src/screen.c",
+  "file": "/home/hades/projects/c/renderer/src/screen.c",
+  "output": "CMakeFiles/main.dir/src/screen.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/math/vector3.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector3.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector3.c",
-  "output": "CMakeFiles/main.dir/src/math/vector3.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/triangle.c.o -c /home/hades/projects/c/renderer/src/triangle.c",
+  "file": "/home/hades/projects/c/renderer/src/triangle.c",
+  "output": "CMakeFiles/main.dir/src/triangle.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/math/vector4.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector4.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/math/vector4.c",
-  "output": "CMakeFiles/main.dir/src/math/vector4.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/vector2.c.o -c /home/hades/projects/c/renderer/src/vector2.c",
+  "file": "/home/hades/projects/c/renderer/src/vector2.c",
+  "output": "CMakeFiles/main.dir/src/vector2.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/pipeline.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/pipeline.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/pipeline.c",
-  "output": "CMakeFiles/main.dir/src/pipeline.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/vector3.c.o -c /home/hades/projects/c/renderer/src/vector3.c",
+  "file": "/home/hades/projects/c/renderer/src/vector3.c",
+  "output": "CMakeFiles/main.dir/src/vector3.c.o"
 },
 {
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/projection.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/projection.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/projection.c",
-  "output": "CMakeFiles/main.dir/src/projection.c.obj"
-},
-{
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/screen.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/screen.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/screen.c",
-  "output": "CMakeFiles/main.dir/src/screen.c.obj"
-},
-{
-  "directory": "C:/Users/filah/Documents/projects/c/RasterizerC/build/Release",
-  "command": "C:/msys64/mingw64/bin/cc.exe  @CMakeFiles/main.dir/includes_C.rsp -O3 -DNDEBUG -std=gnu11 -Wall -o CMakeFiles/main.dir/src/triangle.c.obj -c C:/Users/filah/Documents/projects/c/RasterizerC/src/triangle.c",
-  "file": "C:/Users/filah/Documents/projects/c/RasterizerC/src/triangle.c",
-  "output": "CMakeFiles/main.dir/src/triangle.c.obj"
+  "directory": "/home/hades/projects/c/renderer/build/Debug",
+  "command": "/usr/bin/cc  -I/home/hades/projects/c/renderer/include -I/home/hades/projects/c/renderer/external/include -g -std=gnu11 -Wall -o CMakeFiles/main.dir/src/vector4.c.o -c /home/hades/projects/c/renderer/src/vector4.c",
+  "file": "/home/hades/projects/c/renderer/src/vector4.c",
+  "output": "CMakeFiles/main.dir/src/vector4.c.o"
 }
 ]

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name and version
-project(Renderer VERSION 1.0 LANGUAGES C CXX)
+project(a VERSION 1.0 LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 11)
 # Specify the C++ standard
@@ -22,14 +22,28 @@ file(GLOB_RECURSE PROJECT_SOURCES
 )
 
 
-# ============================== stb_image ============================== 
+# ============================== glfw ============================== 
+# Fetch GLFW
+FetchContent_Declare(
+  glfw
+  GIT_REPOSITORY https://github.com/glfw/glfw.git
+  GIT_PROGRESS TRUE
+)
+FetchContent_MakeAvailable(glfw)
 
+# Suppress all warnings for GLFW
+target_compile_options(glfw PRIVATE
+    -w  # Suppress all warnings
+)
 # ============================================================ 
-
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mavx")
+# ============================== stb_image ============================== 
+# ============================================================ 
+# ============================== opengl ============================== 
+find_package(OpenGL REQUIRED)
+# ============================================================ 
 
 # Create executable
 add_executable(main ${PROJECT_SOURCES})
 
-target_link_libraries(main PRIVATE  m)
+target_link_libraries(main PRIVATE  glfw  OpenGL::GL)
 target_compile_options(main PRIVATE -Wall)

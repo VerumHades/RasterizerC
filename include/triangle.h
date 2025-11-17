@@ -24,10 +24,14 @@ typedef struct BoundingBox {
     float_unit width, height;
 } BoundingBox;
 
-BoundingBox get_triangle_bounding_box(Triangle2* triangle);
-ComputedTriangleData compute_triangle_normals(Triangle2* triangle);
-int point_in_triangle_precomputed(Triangle2* triangle, ComputedTriangleData* data, Vector2* point);
-float_unit calculate_triangle_area(Triangle2* triangle);
+typedef struct TriangleRenderResult{
+    float uvs[3];
+    int clockwise;
+} TriangleRenderResult;
+
+BoundingBox get_triangle_bounding_box(Triangle3* triangle);
+ComputedTriangleData compute_triangle_normals(Triangle3* triangle);
+int point_in_triangle_precomputed(Triangle3* triangle, ComputedTriangleData* data, Vector2* point, TriangleRenderResult* result);
 
 
 #endif // TRIANGLE_H

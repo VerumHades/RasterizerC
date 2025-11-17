@@ -1,10 +1,10 @@
-#include "triangle.h"
 #include "math/mathplus.h"
+#include "triangle.h"
 #include "units.h"
 #include "math/vector2.h"
 #include <immintrin.h>
 
-BoundingBox get_triangle_bounding_box(Triangle2* triangle){
+BoundingBox get_triangle_bounding_box(Triangle3* triangle){
     BoundingBox box = {0};
     box.min.x = box.min.y = 1e30f;  // start very large
     box.max.x = box.max.y = -1e30f; // start very small
@@ -22,7 +22,7 @@ BoundingBox get_triangle_bounding_box(Triangle2* triangle){
     return box;
 }
 
-ComputedTriangleData compute_triangle_normals(Triangle2* triangle){
+ComputedTriangleData compute_triangle_normals(Triangle3* triangle){
     ComputedTriangleData data = {0};
     for(int i = 0; i < 3; i++){
         Vector2* a = &triangle->points[i];
@@ -33,32 +33,23 @@ ComputedTriangleData compute_triangle_normals(Triangle2* triangle){
     return data;
 }
 
-__m256 simd_4_pairs(float pair[2]){
-    __m128 pairv = _mm_set_ps1(0.0f);
-    pairv = _mm_loadl_pi(pairv, (__m64*)pair);
-    pairv = _mm_movelh_ps(pairv, pairv);
-    __m256 repeated = _mm256_broadcast_ps(&pairv);
-    return repeated;
-}
 
-int point_in_triangle_precomputed(Triangle2* triangle, ComputedTriangleData* data, Vector2* point){
-    __m256 point_4_pairs = simd_4_pairs((float*)point);
+int point_in_triangle_precomputed(Triangle3* triangle, ComputedTriangleData* data, Vector2* point, TriangleRenderResult* result){
+    Vector3 a = triangle->points[0];
+    Vector3 b = triangle->points[1];
+    Vector3 c = triangle->points[2];
+    Vector2 p = *point;
 
-    const __m256i mask = _mm256_set_epi32(0,0,-1,-1,-1,-1,-1,-1);
-    __m256 triangle_points = _mm256_maskload_ps((float*)triangle->points, mask);
+    float area_ABC = (b.x - a.x)*(c.y - a.y) - (c.x - a.x)*(b.y - a.y);
+    float area_PBC = (b.x - p.x)*(c.y - p.y) - (c.x - p.x)*(b.y - p.y);
+    float area_PCA = (c.x - p.x)*(a.y - p.y) - (a.x - p.x)*(c.y - p.y);
+    float area_PAB = (a.x - p.x)*(b.y - p.y) - (b.x - p.x)*(a.y - p.y);
 
-    __m256 toward_point_vectors = _mm256_sub_ps(point_4_pairs, triangle_points);
-    __m256 triangle_normals = _mm256_maskload_ps((float*)data->normals_not_normalized, mask);  
+    result->uvs[0] = area_PBC / area_ABC;
+    result->uvs[1] = area_PCA / area_ABC;
+    result->uvs[2] = area_PAB / area_ABC;
 
-    __m256 dot_mult = _mm256_mul_ps(toward_point_vectors, triangle_normals);
-    __m256 signed_areas_double = _mm256_hadd_ps(dot_mult,dot_mult);
-
-    __m256 half = _mm256_set1_ps(0.5f);       // broadcast 0.5 to all lanes
-    __m256 signed_areas_whole = _mm256_mul_ps( signed_areas_double , half);
-    __m128 signed_areas_low = _mm256_castps256_ps128(signed_areas_whole);
-
-    float first4[4];
-    _mm_storeu_ps(first4, signed_areas_low);  
-
-    return (first4[0] * first4[1] >= 0) &&  (first4[1] * first4[2] >= 0);
+    int inside = (area_PBC*area_PCA >= 0) && (area_PCA*area_PAB >= 0);
+    result->clockwise = inside && area_PAB > 0;
+    return inside; // clockwise check
 }
